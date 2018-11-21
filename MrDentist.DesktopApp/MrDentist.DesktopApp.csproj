@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9E7C69D7-D775-46D7-A645-0DD38B5C7CE8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>MrDentist.DesktopApp</RootNamespace>
+    <AssemblyName>MrDentist.DesktopApp</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppointmentsPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AppointmentsPage.Designer.cs">
+      <DependentUpon>AppointmentsPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrudToolStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ICrudToolStripActions.cs" />
+    <Compile Include="Login\AuthorizationController.cs" />
+    <Compile Include="Login\EntryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\EntryForm.Designer.cs">
+      <DependentUpon>EntryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\LoginControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Login\LoginControl.Designer.cs">
+      <DependentUpon>LoginControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\LoginFailReason.cs" />
+    <Compile Include="Login\LoginResult.cs" />
+    <Compile Include="PageBrowser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PageBrowser.Designer.cs">
+      <DependentUpon>PageBrowser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewPageRequestedEventArgs.cs" />
+    <Compile Include="OdontogramCanvas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="OdontogramEntryPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OdontogramEntryPage.Designer.cs">
+      <DependentUpon>OdontogramEntryPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OdontogramPainter.cs" />
+    <Compile Include="Page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PatientCrudActions.cs" />
+    <Compile Include="PatientHistoryPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PatientHistoryPage.Designer.cs">
+      <DependentUpon>PatientHistoryPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PatientsPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PatientsPage.Designer.cs">
+      <DependentUpon>PatientsPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AppointmentsPage.resx">
+      <DependentUpon>AppointmentsPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\EntryForm.resx">
+      <DependentUpon>EntryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\LoginControl.resx">
+      <DependentUpon>LoginControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PageBrowser.resx">
+      <DependentUpon>PageBrowser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OdontogramEntryPage.resx">
+      <DependentUpon>OdontogramEntryPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Page.resx">
+      <DependentUpon>Page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PatientHistoryPage.resx">
+      <DependentUpon>PatientHistoryPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PatientsPage.resx">
+      <DependentUpon>PatientsPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Resources\desktop.ini" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MrDentist.Data\MrDentist.Data.csproj">
+      <Project>{dc6302e4-4961-4179-a032-9ee75ec729f1}</Project>
+      <Name>MrDentist.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MrDentist.Models\MrDentist.Models.csproj">
+      <Project>{9a6ded69-3a82-4f33-9667-7e7412ef2c5c}</Project>
+      <Name>MrDentist.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MrDentist.Pages\MrDentist.Pages.csproj">
+      <Project>{816cdb0e-a7f2-41dc-96f3-1421a5b39bc1}</Project>
+      <Name>MrDentist.Pages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MrDentist.Presenters\MrDentist.Presenters.csproj">
+      <Project>{8ea7c02f-b152-4e29-8641-d068c53a9371}</Project>
+      <Name>MrDentist.Presenters</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="OdontogramImages\odontogram.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\right.png" />
+    <None Include="Resources\restoration.ico" />
+    <None Include="Resources\plus_1.png" />
+    <None Include="Resources\plus.png" />
+    <None Include="Resources\pencil_1.png" />
+    <None Include="Resources\pencil.png" />
+    <None Include="Resources\patient_history.png" />
+    <None Include="Resources\odonto.ico" />
+    <None Include="Resources\left.png" />
+    <None Include="Resources\eraser.png" />
+    <None Include="Resources\dentistry.ico" />
+    <None Include="Resources\cursor.ico" />
+    <None Include="Resources\cross_1.png" />
+    <None Include="Resources\cross.png" />
+    <None Include="Resources\cavities.ico" />
+    <None Include="Resources\bin.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
