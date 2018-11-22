@@ -18,7 +18,7 @@ namespace MrDentist.DesktopApp
             InitAppointmentsDataGridView();
         }
 
-        public PatientHistoryPage(DataRepository dataRepository, Patient patient, Dentist dentist)
+        public PatientHistoryPage(IDataRepository dataRepository, Patient patient, Dentist dentist)
         {
             TitleText = "Editar Prontuário";
 

@@ -13,7 +13,7 @@ namespace MrDentist.DesktopApp
 {
     public partial class AppointmentsPage : Page
     {
-        public AppointmentsPage(DataRepository dataRepository)
+        public AppointmentsPage(IDataRepository dataRepository)
         {
             InitializeComponent();
             TitleText = "Agenda";

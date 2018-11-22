@@ -1,25 +1,44 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MrDentist.Models;
+﻿using MongoDB.Driver;
+using MrDentist.Data.MongoDB.DAOs;
+using System;
 
 namespace MrDentist.Data.MongoDB
 {
     public class MongoDataRepository : IDataRepository
     {
-        private MongoPatientsDataAccessObject _patients;
-        private MongoDentistsDataAccessObject _dentists;
-        private MongoAppointmentsDataAccessObject _appointments;
+        internal const string DATABASE_NAME = "mrdentist";
 
-        public IDataAccessObject<Patient> Patients => _patients;
-        public IDataAccessObject<Dentist> Dentists => _dentists;
-        public IDataAccessObject<Appointment> Appointments => _appointments;
+        private readonly MongoPatientsDataAccessObject patients;
+        private readonly MongoDentistsDataAccessObject dentists;
+        private readonly MongoAppointmentsDataAccessObject appointments;
+        private readonly MongoExamsDataAccessObject exams;
+        private readonly MongoPicturesDataAccessObject pictures;
+        private readonly MongoOdontogramDataAccessObject odontograms;
+        private readonly MongoAddressesDataAccessObject addresses;
+        private readonly MongoUsersDataAccessObjects users;
+
+        public IPatientsDataAccessObject Patients => patients;
+        public IDentistsDataAccessObject Dentists => dentists;
+        public IAppointmentsDataAccessObject Appointments => appointments;
+        public IExamsDataAccessObject Exams => exams;
+        public IPicturesDataAccessObject Pictures => pictures;
+        public IOdontogramsDataAccessObject Odontograms => odontograms;
+        public IAddressesDataAccessObject Addresses => addresses;
+        public IUsersDataAccessObject Users => users;
+
+        internal MongoClient Client { get; private set; }
 
         public MongoDataRepository(string connectionString)
         {
-            _patients = new MongoPatientsDataAccessObject(connectionString, "mrdentist", "patients");
+            Client = new MongoClient(connectionString);
+            this.patients = new MongoPatientsDataAccessObject(this);
+            this.dentists = new MongoDentistsDataAccessObject(this);
+            this.appointments = new MongoAppointmentsDataAccessObject(this);
+            this.exams = new MongoExamsDataAccessObject(this);
+            this.pictures = new MongoPicturesDataAccessObject(this);
+            this.odontograms = new MongoOdontogramDataAccessObject(this);
+            this.addresses = new MongoAddressesDataAccessObject(this);
+            this.users = new MongoUsersDataAccessObjects(this);
         }
     }
 }

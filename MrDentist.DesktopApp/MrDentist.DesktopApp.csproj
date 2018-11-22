@@ -155,6 +155,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MrDentist.Data.Memory\MrDentist.Data.Memory.csproj">
+      <Project>{42d41002-e6dc-4a8d-9e4c-f22eb333d69a}</Project>
+      <Name>MrDentist.Data.Memory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MrDentist.Data.MongoDB\MrDentist.Data.MongoDB.csproj">
+      <Project>{e08c22ad-c068-4beb-83d9-31ce548f77db}</Project>
+      <Name>MrDentist.Data.MongoDB</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MrDentist.Data\MrDentist.Data.csproj">
       <Project>{dc6302e4-4961-4179-a032-9ee75ec729f1}</Project>
       <Name>MrDentist.Data</Name>

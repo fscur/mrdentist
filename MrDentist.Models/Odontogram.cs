@@ -9,8 +9,14 @@ namespace MrDentist.Models
 {
     public class Odontogram
     {
-        public int Id { get; set; }
+        public int Id { get; private set; }
         public Image BaseImage { get; set; }
-        public List<OdontogramEntry> Entries { get; set;}
+        public List<OdontogramEntry> Entries { get; private set;}
+
+        public Odontogram(int id)
+        {
+            Id = id;
+            Entries = new List<OdontogramEntry>();
+        }
     }
 }

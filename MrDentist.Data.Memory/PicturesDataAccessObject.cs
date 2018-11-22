@@ -1,28 +1,28 @@
 ﻿using System.Collections.Generic;
 using MrDentist.Models;
 
-namespace MrDentist.Data.MongoDB
+namespace MrDentist.Data.Memory
 {
-    internal class MongoDentistsDataAccessObject : IDataAccessObject<Dentist>
+    internal class PicturesDataAccessObject : IPicturesDataAccessObject
     {
-        public IEnumerable<Dentist> All => throw new System.NotImplementedException();
+        public IEnumerable<Picture> All => throw new System.NotImplementedException();
 
-        public bool Add(Dentist obj)
+        public bool Add(Picture obj)
         {
             throw new System.NotImplementedException();
         }
 
-        public Dentist Get(int id)
+        public Picture Get(int id)
         {
             throw new System.NotImplementedException();
         }
 
-        public bool Remove(Dentist obj)
+        public bool Remove(Picture obj)
         {
             throw new System.NotImplementedException();
         }
 
-        public bool Update(Dentist obj)
+        public bool Update(Picture obj)
         {
             throw new System.NotImplementedException();
         }

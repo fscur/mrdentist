@@ -8,7 +8,7 @@ namespace MrDentist.Presenters
 {
     public class PatientHistoryPresenter : IPatientHistoryPresenter
     {
-        private DataRepository dataRepository;
+        private IDataRepository dataRepository;
         private IPatientHistoryPage page;
         private Patient patient;
 
@@ -35,7 +35,7 @@ namespace MrDentist.Presenters
 
         public event EventHandler<OdontogramEntry> OdontogramEntryPageRequested;
 
-        public PatientHistoryPresenter(DataRepository dataRepository, IPatientHistoryPage page)
+        public PatientHistoryPresenter(IDataRepository dataRepository, IPatientHistoryPage page)
         {
             this.page = page;
             this.dataRepository = dataRepository;

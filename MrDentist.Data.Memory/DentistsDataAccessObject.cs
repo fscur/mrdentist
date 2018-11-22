@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MrDentist.Data
+namespace MrDentist.Data.Memory
 {
-    public class DentistsDataAccessObject : IDataAccessObject<Dentist>
+    public class DentistsDataAccessObject : IDentistsDataAccessObject
     {
         private List<Dentist> dentists;
 

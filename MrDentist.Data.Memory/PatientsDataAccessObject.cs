@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MrDentist.Data
+namespace MrDentist.Data.Memory
 {
-    public class PatientsDataAccessObject : IDataAccessObject<Patient>
+    public class PatientsDataAccessObject : IPatientsDataAccessObject
     {
         private List<Patient> patients;
 
@@ -37,8 +37,12 @@ namespace MrDentist.Data
         {
             return true;
         }
-        
+
+        public IEnumerable<Patient> GetPatientsByDentistId(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Patient> All => patients;
-        
     }
 }

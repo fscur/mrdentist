@@ -41,14 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppointmentsDataAccessObject.cs" />
-    <Compile Include="DentistsDataAccessObject.cs" />
+    <Compile Include="IAddressesDataAccessObject.cs" />
     <Compile Include="IAppointmentsDataAccessObject.cs" />
     <Compile Include="IDataAccessObject.cs" />
     <Compile Include="IDataRepository.cs" />
-    <Compile Include="PatientsDataAccessObject.cs" />
+    <Compile Include="IDentistsDataAccessObject.cs" />
+    <Compile Include="IExamsDataAccessObject.cs" />
+    <Compile Include="IOdontogramEntriesDataAccessObject.cs" />
+    <Compile Include="IOdontogramsDataAccessObject.cs" />
+    <Compile Include="IPatientsDataAccessObject.cs" />
+    <Compile Include="IPicturesDataAccessObject.cs" />
+    <Compile Include="IUsersDataAccessObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DataRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MrDentist.Models\MrDentist.Models.csproj">

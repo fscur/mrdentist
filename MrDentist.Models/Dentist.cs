@@ -4,10 +4,10 @@ namespace MrDentist.Models
 {
     public class Dentist : Person
     {
-        public int ProfessionalRegister { get; set; }
+        public string ProfessionalRegister { get; set; }
         public List<Patient> Patients { get; private set; }
 
-        public Dentist()
+        public Dentist(int id) : base(id)
         {
             Patients = new List<Patient>();
         }

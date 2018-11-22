@@ -8,7 +8,7 @@ namespace MrDentist.Presenters
 {
     public class OdontogramEntryPresenter : IOdontogramEntryPresenter
     {
-        private readonly DataRepository dataRepository;
+        private readonly IDataRepository dataRepository;
         private IOdontogramEntryPage page;
         private OdontogramEditMode editMode;
         private OdontogramEntry odontogramEntry;
@@ -30,7 +30,7 @@ namespace MrDentist.Presenters
 
         public IPage Page => page;
 
-        public OdontogramEntryPresenter(DataRepository dataRepository, IOdontogramEntryPage page)
+        public OdontogramEntryPresenter(IDataRepository dataRepository, IOdontogramEntryPage page)
         {
             this.page = page;
             this.dataRepository = dataRepository;

@@ -65,11 +65,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MongoAppointmentsDataAccessObject.cs" />
+    <Compile Include="DTOs\MongoAppointmentDTO.cs" />
+    <Compile Include="DTOs\MongoAddressDTO.cs" />
+    <Compile Include="DAOs\MongoAddressesDataAccessObject.cs" />
+    <Compile Include="DAOs\MongoAppointmentsDataAccessObject.cs" />
+    <Compile Include="DTOs\MongoOdontogramEntryDTO.cs" />
     <Compile Include="MongoDataRepository.cs" />
-    <Compile Include="MongoDentistsDataAccessObject.cs" />
-    <Compile Include="MongoPatientDTO.cs" />
-    <Compile Include="MongoPatientsDataAccessObject.cs" />
+    <Compile Include="DTOs\MongoDentistDTO.cs" />
+    <Compile Include="DAOs\MongoDentistsDataAccessObject.cs" />
+    <Compile Include="DAOs\MongoExamsDataAccessObject.cs" />
+    <Compile Include="DAOs\MongoOdontogramDataAccessObject.cs" />
+    <Compile Include="DTOs\MongoPatientDTO.cs" />
+    <Compile Include="DAOs\MongoPatientsDataAccessObject.cs" />
+    <Compile Include="DAOs\MongoPicturesDataAccessObject.cs" />
+    <Compile Include="DTOs\MongoUserDTO.cs" />
+    <Compile Include="DAOs\MongoUsersDataAccessObjects.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

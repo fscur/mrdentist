@@ -2,8 +2,12 @@
 {
     public class Address
     {
-        public int Id;
-        public string Description;
-        public City City;
+        public int Id { get; private set; }
+        public string Description { get; set; }
+
+        public Address(int id)
+        {
+            Id = id;
+        }
     }
 }

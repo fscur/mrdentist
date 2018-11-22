@@ -8,10 +8,10 @@ namespace MrDentist.DesktopApp
 {
     public partial class PatientsPage : Page
     {
-        private DataRepository dataRepository;
+        private IDataRepository dataRepository;
         private User loggedUser;
 
-        public PatientsPage(User loggedUser, DataRepository dataRepository)
+        public PatientsPage(User loggedUser, IDataRepository dataRepository)
         {
             InitializeComponent();
             this.loggedUser = loggedUser;
