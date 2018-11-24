@@ -6,6 +6,12 @@ using System.Linq;
 
 namespace MrDentist.Presenters
 {
+    public class OdontogramEntryPageRequestedEventArgs : EventArgs
+    {
+        public Odontogram Odontogram { get; set; }
+        public OdontogramEntry Entry { get; set; }
+    }
+
     public class PatientHistoryPresenter : IPatientHistoryPresenter
     {
         private IDataRepository dataRepository;
@@ -33,7 +39,7 @@ namespace MrDentist.Presenters
 
         public IPage Page => page;
 
-        public event EventHandler<OdontogramEntry> OdontogramEntryPageRequested;
+        public event EventHandler<OdontogramEntryPageRequestedEventArgs> OdontogramEntryPageRequested;
 
         public PatientHistoryPresenter(IDataRepository dataRepository, IPatientHistoryPage page)
         {
@@ -53,14 +59,20 @@ namespace MrDentist.Presenters
 
             page.EditOdontogramEntryClicked += (s, appointment) =>
             {
-                RaiseOdontogramEntryPageRequested(appointment.OdontogramEntry);
+                var e = new OdontogramEntryPageRequestedEventArgs()
+                {
+                    Odontogram = appointment.Patient.Odontogram,
+                    Entry = appointment.OdontogramEntry
+                };
+
+                RaiseOdontogramEntryPageRequested(e);
             };
         }
 
-        private void RaiseOdontogramEntryPageRequested(OdontogramEntry entry)
+        private void RaiseOdontogramEntryPageRequested(OdontogramEntryPageRequestedEventArgs e)
         {
             if (OdontogramEntryPageRequested != null)
-                OdontogramEntryPageRequested.Invoke(this, entry);
+                OdontogramEntryPageRequested.Invoke(this, e);
         }
     }
 }

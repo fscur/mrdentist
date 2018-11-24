@@ -11,7 +11,7 @@ namespace MrDentist.Data.MongoDB
         public int DentistId { get; set; }
         public string Observations { get; set; }
         public bool Attended { get; set; }
-        public int OdontogramEntryId { get; set; }
+        public int? OdontogramEntryId { get; set; }
     }
 
     internal static partial class AppointmentExtensions
@@ -31,7 +31,7 @@ namespace MrDentist.Data.MongoDB
                 DentistId = obj.Dentist.Id,
                 Observations = obj.Observations,
                 Attended = obj.Attended,
-                OdontogramEntryId = obj.OdontogramEntry.Id
+                OdontogramEntryId = obj.OdontogramEntry?.Id
             };
         }
 

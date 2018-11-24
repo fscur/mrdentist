@@ -23,7 +23,7 @@ namespace MrDentist.DesktopApp
 
     public static class OdontogramPainter
     {
-        public static void Draw(Graphics g, IDentalEventShape shape)
+        public static void Draw(Graphics g, IDentalIssueShape shape)
         {
             if (shape is Models.Point)
                 PointPainter.Draw(g, shape as Models.Point);

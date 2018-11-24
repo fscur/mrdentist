@@ -5,12 +5,12 @@ using MrDentist.Models;
 
 namespace MrDentist.Data.MongoDB.DAOs
 {
-    internal class MongoUsersDataAccessObjects : IUsersDataAccessObject
+    internal class MongoUsersDataAccessObject : IUsersDataAccessObject
     {
         private readonly MongoDataRepository repository;
         private readonly IMongoCollection<MongoUserDTO> collection;
 
-        public MongoUsersDataAccessObjects(MongoDataRepository repository)
+        public MongoUsersDataAccessObject(MongoDataRepository repository)
         {
             this.repository = repository;
             var database = repository.Client.GetDatabase(MongoDataRepository.DATABASE_NAME);

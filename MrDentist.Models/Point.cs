@@ -1,6 +1,6 @@
 ﻿namespace MrDentist.Models
 {
-    public class Point : IDentalEventShape
+    public class Point : IDentalIssueShape
     {
         public int Id { get; set; }
         public System.Drawing.Color Color { get; set; }

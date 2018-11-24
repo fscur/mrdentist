@@ -1,6 +1,6 @@
 ﻿namespace MrDentist.Models
 {
-    public interface IDentalEventShape
+    public interface IDentalIssueShape
     {
         int Id { get; set; }
         IPointF Position { get; set; }

@@ -9,5 +9,6 @@ namespace MrDentist.Data
 {
     public interface IOdontogramEntriesDataAccessObject : IDataAccessObject<OdontogramEntry>
     {
+        IEnumerable<OdontogramEntry> GetEntriesByOdontogramId(int id);
     }
 }

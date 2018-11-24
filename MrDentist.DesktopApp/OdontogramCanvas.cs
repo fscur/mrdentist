@@ -13,13 +13,13 @@ namespace MrDentist.DesktopApp
     {
         private Timer timer;
 
-        public List<IDentalEventShape> Shapes { get; set; }
+        public List<IDentalIssueShape> Shapes { get; set; }
 
         public OdontogramEntryCanvas() : base()
         {
             this.DoubleBuffered = true;
 
-            this.Shapes = new List<IDentalEventShape>();
+            this.Shapes = new List<IDentalIssueShape>();
 
             timer = new Timer();
             timer.Tick += (s, e) =>

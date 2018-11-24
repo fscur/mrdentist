@@ -7,12 +7,12 @@ namespace MrDentist.Models
     {
         public int Id { get; private set; }
         public DateTime Date { get; set; }
-        public List<IDentalEvent> DentalEvents { get; set; }
-        public Odontogram Odontogram { get; set; }
+        public List<IDentalIssue> DentalIssues { get; private set; }
 
         public OdontogramEntry(int id)
         {
             Id = id;
+            DentalIssues = new List<IDentalIssue>();
         }
     }
 }

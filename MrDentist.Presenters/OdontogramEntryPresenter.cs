@@ -2,6 +2,7 @@
 using MrDentist.Models;
 using MrDentist.Pages;
 using System;
+using System.Drawing;
 using System.Linq;
 
 namespace MrDentist.Presenters
@@ -22,9 +23,7 @@ namespace MrDentist.Presenters
                     return;
 
                 odontogramEntry = value;
-
-                page.SetCanvasImage(odontogramEntry.Odontogram.BaseImage);
-                odontogramEntry.DentalEvents.ForEach(e => page.AddShapeToCanvas(e.Shape));
+                odontogramEntry.DentalIssues.ForEach(e => page.AddShapeToCanvas(e.Shape));
             }
         }
 
@@ -58,13 +57,13 @@ namespace MrDentist.Presenters
                         break;
                     case OdontogramEditMode.AddCavity:
                         var cavity = new Cavity(1, e);
-                        odontogramEntry.DentalEvents.Add(cavity);
+                        odontogramEntry.DentalIssues.Add(cavity);
                         page.AddShapeToCanvas(cavity.Shape);
                         
                         break;
                     case OdontogramEditMode.AddRestoration:
                         var restoration = new Restoration(1, e);
-                        odontogramEntry.DentalEvents.Add(restoration);
+                        odontogramEntry.DentalIssues.Add(restoration);
                         page.AddShapeToCanvas(restoration.Shape);
                         break;
                     case OdontogramEditMode.Eraser:
@@ -76,6 +75,11 @@ namespace MrDentist.Presenters
 
             editMode = OdontogramEditMode.AddCavity;
             page.SetEditMode(editMode);
+        }
+
+        public void SetOdontogramImage(Image image)
+        {
+            page.SetCanvasImage(image);
         }
     }
 }

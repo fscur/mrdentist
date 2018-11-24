@@ -23,6 +23,8 @@ namespace MrDentist.Data.Memory
         public IAddressesDataAccessObject Addresses => addresses;
         public IUsersDataAccessObject Users => users;
 
+        public IOdontogramEntriesDataAccessObject OdontogramEntries => throw new NotImplementedException();
+
         public DataRepository()
         {
             patients = new PatientsDataAccessObject();

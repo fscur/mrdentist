@@ -1,9 +1,10 @@
 ﻿using MrDentist.Models;
+using System;
 
 namespace MrDentist.Data
 {
     public interface IOdontogramsDataAccessObject : IDataAccessObject<Odontogram>
     {
-        Odontogram GetByPatientId(int id);
+        OdontogramEntry GetOdontogramEntry(int odontogramId, DateTime date);
     }
 }

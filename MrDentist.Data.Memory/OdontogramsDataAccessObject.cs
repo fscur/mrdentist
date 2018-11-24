@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using MrDentist.Models;
 
 namespace MrDentist.Data.Memory
@@ -24,6 +25,11 @@ namespace MrDentist.Data.Memory
         public Odontogram GetByPatientId(int id)
         {
             throw new System.NotImplementedException();
+        }
+
+        public OdontogramEntry GetOdontogramEntry(int odontogramId, DateTime date)
+        {
+            throw new NotImplementedException();
         }
 
         public bool Remove(Odontogram obj)

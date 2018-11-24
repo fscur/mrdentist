@@ -45,11 +45,10 @@ namespace MrDentist.DesktopApp
             var date1 = new DateTime(2018, 7, 2);
             var odontogramEntry1 = new OdontogramEntry(0)
             {
-                Date = date1,
-                DentalEvents = new List<IDentalEvent>() {
-                    new Cavity(0, new Models.PointF(100, 250))
-                },
+                Date = date1
             };
+
+            odontogramEntry1.DentalIssues.Add(new Cavity(0, new Models.PointF(100, 250)));
 
             var odontogram1 = new Odontogram(0)
             {
@@ -57,7 +56,6 @@ namespace MrDentist.DesktopApp
             };
 
             odontogram1.Entries.Add(odontogramEntry1);
-            odontogramEntry1.Odontogram = odontogram1;
 
             var patient1 = new Patient(1)
             {
@@ -128,7 +126,8 @@ namespace MrDentist.DesktopApp
 
             patientHistoryPresenter.OdontogramEntryPageRequested += (s, e) =>
             {
-                odontogramEntryPresenter.OdontograEntry = e;
+                odontogramEntryPresenter.OdontograEntry = e.Entry;
+                odontogramEntryPresenter.SetOdontogramImage(e.Odontogram.BaseImage);
                 pageBrowser.OpenPage(odontogramEntryPage);
             };
 

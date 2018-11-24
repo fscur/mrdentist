@@ -115,7 +115,7 @@ namespace MrDentist.DesktopApp
             this.canvas.Image = image;
         }
 
-        public void AddShapeToCanvas(IDentalEventShape shape)
+        public void AddShapeToCanvas(IDentalIssueShape shape)
         {
             this.canvas.Shapes.Add(shape);
         }

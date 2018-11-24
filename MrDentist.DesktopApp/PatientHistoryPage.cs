@@ -94,7 +94,7 @@ namespace MrDentist.DesktopApp
 
         public void SetSelectedOdontogramEntry(OdontogramEntry entry)
         {
-            entry.DentalEvents.ForEach(p => this.canvas.Shapes.Add(p.Shape));
+            entry.DentalIssues.ForEach(p => this.canvas.Shapes.Add(p.Shape));
         }
 
         public void SetPatient(Patient patient)

@@ -11,6 +11,6 @@ namespace MrDentist.Pages
         event EventHandler<IPointF> CanvasMouseUp;
         void SetEditMode(OdontogramEditMode mode);
         void SetCanvasImage(System.Drawing.Image image);
-        void AddShapeToCanvas(IDentalEventShape shape);
+        void AddShapeToCanvas(IDentalIssueShape shape);
     }
 }

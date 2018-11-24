@@ -45,6 +45,7 @@
     <Compile Include="IAppointmentsDataAccessObject.cs" />
     <Compile Include="IDataAccessObject.cs" />
     <Compile Include="IDataRepository.cs" />
+    <Compile Include="IDentalIssuesDataAccessObject.cs" />
     <Compile Include="IDentistsDataAccessObject.cs" />
     <Compile Include="IExamsDataAccessObject.cs" />
     <Compile Include="IOdontogramEntriesDataAccessObject.cs" />

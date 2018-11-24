@@ -8,13 +8,12 @@ namespace MrDentist.Data.MongoDB.DTOs
     {
         public int Id { get; set; }
         public DateTime Date { get; set; }
-        public List<IDentalEvent> DentalEvents { get; set; }
         public int OdontogramId { get; set; }
     }
 
     internal static partial class OdontogramEntryExtensions
     {
-        public static MongoOdontogramEntryDTO ToDto(this OdontogramEntry obj)
+        public static MongoOdontogramEntryDTO ToDto(this OdontogramEntry obj, int odontogramId)
         {
             if (obj == null)
             {
@@ -25,8 +24,7 @@ namespace MrDentist.Data.MongoDB.DTOs
             {
                 Id = obj.Id,
                 Date = obj.Date,
-                DentalEvents = obj.DentalEvents,
-                OdontogramId = obj.Odontogram.Id
+                OdontogramId = odontogramId
             };
         }
 
@@ -42,12 +40,12 @@ namespace MrDentist.Data.MongoDB.DTOs
                 throw new System.ArgumentNullException(nameof(repository));
             }
 
-            return new OdontogramEntry(dto.Id)
+            var entry = new OdontogramEntry(dto.Id)
             {
-                Date = dto.Date, 
-                Odontogram = repository.Odontograms.Get(dto.Id),
-                DentalEvents = dto.DentalEvents
-            };  
+                Date = dto.Date
+            };
+
+            return entry;
         }
     }
 }

@@ -9,13 +9,14 @@ namespace MrDentist.Data
 {
     public interface IDataRepository
     {
+        IUsersDataAccessObject Users { get; }
         IExamsDataAccessObject Exams { get; }
         IPatientsDataAccessObject Patients { get; }
         IDentistsDataAccessObject Dentists { get; }
         IAppointmentsDataAccessObject Appointments { get; }
         IPicturesDataAccessObject Pictures { get; }
         IOdontogramsDataAccessObject Odontograms { get; }
+        //IOdontogramEntriesDataAccessObject OdontogramEntries { get; }
         IAddressesDataAccessObject Addresses { get; }
-        IUsersDataAccessObject Users { get; }
     }
 }

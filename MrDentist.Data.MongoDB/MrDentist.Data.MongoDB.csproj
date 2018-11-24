@@ -69,17 +69,19 @@
     <Compile Include="DTOs\MongoAddressDTO.cs" />
     <Compile Include="DAOs\MongoAddressesDataAccessObject.cs" />
     <Compile Include="DAOs\MongoAppointmentsDataAccessObject.cs" />
+    <Compile Include="DTOs\MongoDentalIssueDTO.cs" />
     <Compile Include="DTOs\MongoOdontogramEntryDTO.cs" />
+    <Compile Include="DTOs\MongoOdontogramDTO.cs" />
     <Compile Include="MongoDataRepository.cs" />
     <Compile Include="DTOs\MongoDentistDTO.cs" />
     <Compile Include="DAOs\MongoDentistsDataAccessObject.cs" />
     <Compile Include="DAOs\MongoExamsDataAccessObject.cs" />
-    <Compile Include="DAOs\MongoOdontogramDataAccessObject.cs" />
+    <Compile Include="DAOs\MongoOdontogramsDataAccessObject.cs" />
     <Compile Include="DTOs\MongoPatientDTO.cs" />
     <Compile Include="DAOs\MongoPatientsDataAccessObject.cs" />
     <Compile Include="DAOs\MongoPicturesDataAccessObject.cs" />
     <Compile Include="DTOs\MongoUserDTO.cs" />
-    <Compile Include="DAOs\MongoUsersDataAccessObjects.cs" />
+    <Compile Include="DAOs\MongoUsersDataAccessObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

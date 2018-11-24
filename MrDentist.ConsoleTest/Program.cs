@@ -13,19 +13,28 @@ namespace MrDentist.ConsoleTest
 {
     class Program
     {
+        static DateTime date0 = new DateTime(2018, 3, 10);
+        static DateTime date1 = new DateTime(2018, 7, 2);
+        static DateTime date2 = new DateTime(2018, 10, 1);
+        static DateTime date3 = new DateTime(2018, 12, 9);
+
         static void Main(string[] args)
         {
             var repository = new MrDentist.Data.MongoDB.MongoDataRepository("mongodb://localhost:27017");
 
             var users = CreateFakeUsers(repository);
             var addresses = CreateFakeAddresses(repository);
+            var odontograms = CreateFakeOdontograms(repository);
             var dentists = CreateFakeDentists(repository);
             var patients = CreateFakePatients(repository);
+            var appointments = CreateFakeAppointments(repository);
 
             foreach (var item in repository.Patients.All.ToList())
             {
                 Console.WriteLine(item.Name);
             }
+
+            Console.Read();
         }
 
         private static IEnumerable<User> CreateFakeUsers(MongoDataRepository repository)
@@ -81,7 +90,7 @@ namespace MrDentist.ConsoleTest
                 BloodType = "O-",
                 InsuranceNumber = "188726663",
                 Dentist = repository.Dentists.Get(0),
-                Odontogram = repository.Odontograms.GetByPatientId(1)
+                Odontogram = repository.Odontograms.Get(1)
             };
 
             repository.Patients.Add(patient0);
@@ -104,6 +113,113 @@ namespace MrDentist.ConsoleTest
             return repository.Addresses.All;
         }
 
+        private static IEnumerable<Odontogram> CreateFakeOdontograms(IDataRepository repository)
+        {
+            if (repository.Odontograms.Get(0) != null)
+                return repository.Odontograms.All;
+
+            var odontogramimageurl = @"D:\Drive\study\UCS\CS\2018-4\Projeto e Arquitetura\Trabalho Dentistas\mrdentist\images\odontogram.jpg";
+
+            var odontogram0 = new Odontogram(0)
+            {
+                BaseImage = System.Drawing.Image.FromFile(odontogramimageurl),
+                BaseImageUrl = odontogramimageurl
+            };
+
+            var odontogram1 = new Odontogram(1)
+            {
+                BaseImage = System.Drawing.Image.FromFile(odontogramimageurl),
+                BaseImageUrl = odontogramimageurl
+            };
+
+            var odontogramEntry0 = new OdontogramEntry(0)
+            {
+                Date = date0,
+            };
+
+            odontogramEntry0.DentalIssues.Add(new Cavity(0, new Models.PointF(50, 70)));
+
+            var odontogramEntry1 = new OdontogramEntry(1)
+            {
+                Date = date1,
+            };
+
+            odontogramEntry1.DentalIssues.Add(new Cavity(1, new Models.PointF(100, 50)));
+
+            var odontogramEntry2 = new OdontogramEntry(2)
+            {
+                Date = date2,
+            };
+
+            odontogramEntry2.DentalIssues.Add(new Cavity(2, new Models.PointF(140, 190)));
+
+            var odontogramEntry3 = new OdontogramEntry(3)
+            {
+                Date = date3,
+            };
+
+            odontogramEntry3.DentalIssues.Add(new Cavity(3, new Models.PointF(20, 30)));
+
+            odontogram0.Entries.Add(odontogramEntry0);
+            odontogram1.Entries.Add(odontogramEntry1);
+            odontogram1.Entries.Add(odontogramEntry2);
+            odontogram1.Entries.Add(odontogramEntry3);
+
+            repository.Odontograms.Add(odontogram0);
+            repository.Odontograms.Add(odontogram1);
+
+            return repository.Odontograms.All;   
+        }
+
+        private static IEnumerable<Appointment> CreateFakeAppointments(IDataRepository repository)
+        {
+            if (repository.Appointments.Get(0) != null)
+                return repository.Appointments.All;
+
+            repository.Appointments.Add(new Appointment(0)
+            {
+                Attended = true,
+                Date = date0,
+                Dentist = repository.Dentists.Get(0),
+                Patient = repository.Patients.Get(0),
+                Observations = "O dente caiu da boca."
+            });
+
+            var patient1 = repository.Patients.Get(1);
+
+            repository.Appointments.Add(new Appointment(1)
+            {
+                Attended = true,
+                Date = date1,
+                Dentist = repository.Dentists.Get(0),
+                Patient = patient1,
+                Observations = "O dente estava podre.",
+                OdontogramEntry = repository.Odontograms.GetOdontogramEntry(patient1.Odontogram.Id, date1)
+            });
+
+            repository.Appointments.Add(new Appointment(2)
+            {
+                Attended = true,
+                Date = date2,
+                Dentist = repository.Dentists.Get(0),
+                Patient = patient1,
+                Observations = "O dente estava mais podre.",
+                OdontogramEntry = repository.Odontograms.GetOdontogramEntry(patient1.Odontogram.Id, date2)
+            });
+
+            repository.Appointments.Add(new Appointment(3)
+            {
+                Attended = true,
+                Date = date3,
+                Dentist = repository.Dentists.Get(0),
+                Patient = repository.Patients.Get(1),
+                Observations = "O dente caiu da boca.",
+                OdontogramEntry = repository.Odontograms.GetOdontogramEntry(patient1.Odontogram.Id, date3)
+            });
+
+            return repository.Appointments.All;
+        }
+
         static void RestTest(string[] args)
         {
             var baseUri = new Uri("https://mrdentistrestapi20181120091246.azurewebsites.net");
@@ -112,3 +228,4 @@ namespace MrDentist.ConsoleTest
         }
     }
 }
+

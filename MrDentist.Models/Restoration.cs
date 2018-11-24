@@ -1,11 +1,11 @@
 ﻿namespace MrDentist.Models
 {
-    public class Restoration : IDentalEvent
+    public class Restoration : IDentalIssue
     {
         private Point shape;
 
         public int Id { get; private set; }
-        public IDentalEventShape Shape { get { return shape; } }
+        public IDentalIssueShape Shape { get { return shape; } }
 
         public Restoration(int id, IPointF position)
         {

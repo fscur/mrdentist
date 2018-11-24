@@ -13,9 +13,10 @@ namespace MrDentist.Data.MongoDB
         private readonly MongoAppointmentsDataAccessObject appointments;
         private readonly MongoExamsDataAccessObject exams;
         private readonly MongoPicturesDataAccessObject pictures;
-        private readonly MongoOdontogramDataAccessObject odontograms;
+        private readonly MongoOdontogramsDataAccessObject odontograms;
+        //private readonly MongoOdontogramEntriesDataAccessObject odontogramEntries;
         private readonly MongoAddressesDataAccessObject addresses;
-        private readonly MongoUsersDataAccessObjects users;
+        private readonly MongoUsersDataAccessObject users;
 
         public IPatientsDataAccessObject Patients => patients;
         public IDentistsDataAccessObject Dentists => dentists;
@@ -23,6 +24,7 @@ namespace MrDentist.Data.MongoDB
         public IExamsDataAccessObject Exams => exams;
         public IPicturesDataAccessObject Pictures => pictures;
         public IOdontogramsDataAccessObject Odontograms => odontograms;
+        //public IOdontogramEntriesDataAccessObject OdontogramEntries => odontogramEntries;
         public IAddressesDataAccessObject Addresses => addresses;
         public IUsersDataAccessObject Users => users;
 
@@ -36,9 +38,10 @@ namespace MrDentist.Data.MongoDB
             this.appointments = new MongoAppointmentsDataAccessObject(this);
             this.exams = new MongoExamsDataAccessObject(this);
             this.pictures = new MongoPicturesDataAccessObject(this);
-            this.odontograms = new MongoOdontogramDataAccessObject(this);
+            this.odontograms = new MongoOdontogramsDataAccessObject(this);
+            //this.odontogramEntries = new MongoOdontogramEntriesDataAccessObject(this);
             this.addresses = new MongoAddressesDataAccessObject(this);
-            this.users = new MongoUsersDataAccessObjects(this);
+            this.users = new MongoUsersDataAccessObject(this);
         }
     }
 }

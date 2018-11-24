@@ -1,11 +1,13 @@
 ﻿namespace MrDentist.Models
 {
-    public class Cavity : IDentalEvent
+    public class Cavity : IDentalIssue
     {
         private Point shape;
 
         public int Id { get; private set; }
-        public IDentalEventShape Shape { get { return shape; }}
+        public IDentalIssueShape Shape { get { return shape; }}
+
+        public OdontogramEntry Entry { get; private set; }
 
         public Cavity(int id, IPointF position)
         {

@@ -1,6 +1,6 @@
 ﻿namespace MrDentist.Models
 {
-    public enum DentalEventType
+    public enum DentalIssueType
     {
         Cavity,
         Restoration
