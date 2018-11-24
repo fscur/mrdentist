@@ -13,10 +13,10 @@ namespace MrDentist.ConsoleTest
 {
     class Program
     {
-        static DateTime date0 = new DateTime(2018, 3, 10);
-        static DateTime date1 = new DateTime(2018, 7, 2);
-        static DateTime date2 = new DateTime(2018, 10, 1);
-        static DateTime date3 = new DateTime(2018, 12, 9);
+        static DateTime date0 = (new DateTime(2018, 3, 10)).ToUniversalTime();
+        static DateTime date1 = (new DateTime(2018, 7, 2)).ToUniversalTime();
+        static DateTime date2 = (new DateTime(2018, 10, 1)).ToUniversalTime();
+        static DateTime date3 = (new DateTime(2018, 12, 9)).ToUniversalTime();
 
         static void Main(string[] args)
         {
@@ -187,6 +187,10 @@ namespace MrDentist.ConsoleTest
 
             var patient1 = repository.Patients.Get(1);
 
+            var entry0 = repository.Odontograms.GetOdontogramEntry(patient1.Odontogram.Id, date1);
+            var entry1 = repository.Odontograms.GetOdontogramEntry(patient1.Odontogram.Id, date2);
+            var entry2 = repository.Odontograms.GetOdontogramEntry(patient1.Odontogram.Id, date3);
+
             repository.Appointments.Add(new Appointment(1)
             {
                 Attended = true,
@@ -194,7 +198,7 @@ namespace MrDentist.ConsoleTest
                 Dentist = repository.Dentists.Get(0),
                 Patient = patient1,
                 Observations = "O dente estava podre.",
-                OdontogramEntry = repository.Odontograms.GetOdontogramEntry(patient1.Odontogram.Id, date1)
+                OdontogramEntry = entry0
             });
 
             repository.Appointments.Add(new Appointment(2)
@@ -204,7 +208,7 @@ namespace MrDentist.ConsoleTest
                 Dentist = repository.Dentists.Get(0),
                 Patient = patient1,
                 Observations = "O dente estava mais podre.",
-                OdontogramEntry = repository.Odontograms.GetOdontogramEntry(patient1.Odontogram.Id, date2)
+                OdontogramEntry = entry1
             });
 
             repository.Appointments.Add(new Appointment(3)
@@ -214,8 +218,8 @@ namespace MrDentist.ConsoleTest
                 Dentist = repository.Dentists.Get(0),
                 Patient = repository.Patients.Get(1),
                 Observations = "O dente caiu da boca.",
-                OdontogramEntry = repository.Odontograms.GetOdontogramEntry(patient1.Odontogram.Id, date3)
-            });
+                OdontogramEntry = entry2
+        });
 
             return repository.Appointments.All;
         }

@@ -8,7 +8,8 @@ namespace MrDentist.Data.MongoDB.DTOs
     internal class MongoDentalIssueDTO
     {
         public int Id { get; set; }
-        public IPointF Position { get; set; }
+        public float X { get; set; }
+        public float Y { get; set; }
         public DentalIssueType IssueType { get; set; }
         public int OdontogramEntryId { get; set; }
     }
@@ -32,7 +33,8 @@ namespace MrDentist.Data.MongoDB.DTOs
             return new MongoDentalIssueDTO()
             {
                 Id = obj.Id,
-                Position = obj.Shape.Position,
+                X = obj.Shape.Position.X,
+                Y = obj.Shape.Position.Y,
                 IssueType = issueType,
                 OdontogramEntryId = odontogramEntryId
             };
@@ -50,7 +52,7 @@ namespace MrDentist.Data.MongoDB.DTOs
                 throw new System.ArgumentNullException(nameof(repository));
             }
 
-            return DentalIssueFactory.Create(dto.Id, dto.IssueType, dto.Position);
+            return DentalIssueFactory.Create(dto.Id, dto.IssueType, new PointF(dto.X, dto.Y));
         }
     }
 }

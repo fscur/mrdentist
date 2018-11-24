@@ -33,8 +33,12 @@ namespace MrDentist.Data.MongoDB.DAOs
             {
                 var odontogramEntry = item.ToObj(repository);
 
-                issuesCollection.Find(i => i.OdontogramEntryId == item.Id)
-                .ForEachAsync(p => odontogramEntry.DentalIssues.Add(p.ToObj(repository)));
+                var issues = issuesCollection.Find(i => i.OdontogramEntryId == item.Id).ToList();
+                
+                foreach (var issue in issues)
+                {
+                    odontogramEntry.DentalIssues.Add(issue.ToObj(repository));
+                }
 
                 yield return odontogramEntry;
             }
@@ -114,7 +118,9 @@ namespace MrDentist.Data.MongoDB.DAOs
         {
             try
             {
-                return GetOdontogramEntries(odontogramId).FirstOrDefault(e=>e.Date == date);
+                var entries = GetOdontogramEntries(odontogramId);
+
+                return entries.FirstOrDefault(e=>e.Date == date);
             }
             catch (System.Exception ex)
             {

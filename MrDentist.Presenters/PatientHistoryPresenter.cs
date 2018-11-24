@@ -37,7 +37,7 @@ namespace MrDentist.Presenters
             }
         }
 
-        public IPage Page => page;
+        public IPage Page => page;virtual 
 
         public event EventHandler<OdontogramEntryPageRequestedEventArgs> OdontogramEntryPageRequested;
 

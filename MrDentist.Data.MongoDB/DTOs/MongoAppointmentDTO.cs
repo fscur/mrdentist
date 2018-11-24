@@ -48,7 +48,7 @@ namespace MrDentist.Data.MongoDB
             }
 
             var patient = repository.Patients.Get(dto.PatientId);
-            
+            var odontogramEntry = repository.Odontograms.GetOdontogramEntry(patient.Id, dto.Date);
             return new Appointment(dto.Id)
             {
                 Attended = dto.Attended,
@@ -56,6 +56,7 @@ namespace MrDentist.Data.MongoDB
                 Observations = dto.Observations,
                 Dentist = repository.Dentists.Get(dto.DentistId),
                 Patient = repository.Patients.Get(dto.PatientId),
+                OdontogramEntry = odontogramEntry
             };  
         }
     }
