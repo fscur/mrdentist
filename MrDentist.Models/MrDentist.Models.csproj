@@ -45,6 +45,7 @@
     <Compile Include="Address.cs" />
     <Compile Include="Appointment.cs" />
     <Compile Include="Cavity.cs" />
+    <Compile Include="Extensions\ObservableCollectionExtensions.cs" />
     <Compile Include="Factories\DentalIssueFactory.cs" />
     <Compile Include="IDentalIssue.cs" />
     <Compile Include="IDentalEventShape.cs" />

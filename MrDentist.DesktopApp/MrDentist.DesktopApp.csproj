@@ -55,6 +55,7 @@
     <Compile Include="CrudToolStrip.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Extensions\DownloaderExtensions.cs" />
     <Compile Include="ICrudToolStripActions.cs" />
     <Compile Include="Login\AuthorizationController.cs" />
     <Compile Include="Login\EntryForm.cs">
@@ -171,6 +172,10 @@
       <Project>{9a6ded69-3a82-4f33-9667-7e7412ef2c5c}</Project>
       <Name>MrDentist.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MrDentist.Net.Http\MrDentist.Net.Http.csproj">
+      <Project>{C103B3E2-B833-4F3A-91F3-C22A6BEDCD67}</Project>
+      <Name>MrDentist.Net.Http</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MrDentist.Pages\MrDentist.Pages.csproj">
       <Project>{816cdb0e-a7f2-41dc-96f3-1421a5b39bc1}</Project>
       <Name>MrDentist.Pages</Name>
@@ -184,6 +189,7 @@
     <Content Include="OdontogramImages\odontogram.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\floppy.ico" />
     <None Include="Resources\right.png" />
     <None Include="Resources\restoration.ico" />
     <None Include="Resources\plus_1.png" />

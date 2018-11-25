@@ -10,7 +10,6 @@ namespace MrDentist.Models
     public class Odontogram
     {
         public int Id { get; private set; }
-        public Image BaseImage { get; set; }
         public string BaseImageUrl { get; set; }
         public List<OdontogramEntry> Entries { get; private set;}
 

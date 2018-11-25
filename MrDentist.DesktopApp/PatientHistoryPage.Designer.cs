@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PatientHistoryPage));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.layout = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.patientInfoPanel = new System.Windows.Forms.Panel();
@@ -46,7 +47,7 @@
             this.colExams = new System.Windows.Forms.DataGridViewButtonColumn();
             this.colDummy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.canvas = new OdontogramEntryCanvas();
+            this.canvas = new MrDentist.DesktopApp.OdontogramEntryCanvas();
             this.layout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.patientInfoPanel.SuspendLayout();
@@ -220,6 +221,9 @@
             // 
             // colDate
             // 
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = null;
+            this.colDate.DefaultCellStyle = dataGridViewCellStyle1;
             this.colDate.HeaderText = "Data";
             this.colDate.Name = "colDate";
             this.colDate.ReadOnly = true;
@@ -269,11 +273,11 @@
             // canvas
             // 
             this.canvas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.canvas.Image = ((System.Drawing.Image)(resources.GetObject("canvas.Image")));
             this.canvas.Location = new System.Drawing.Point(22, 12);
             this.canvas.MaximumSize = new System.Drawing.Size(640, 480);
             this.canvas.MinimumSize = new System.Drawing.Size(640, 480);
             this.canvas.Name = "canvas";
+            this.canvas.Shapes = ((System.Collections.Generic.List<MrDentist.Models.IDentalIssueShape>)(resources.GetObject("canvas.Shapes")));
             this.canvas.Size = new System.Drawing.Size(640, 480);
             this.canvas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.canvas.TabIndex = 3;
@@ -314,11 +318,11 @@
         private System.Windows.Forms.TableLayoutPanel evolutionLayout;
         private System.Windows.Forms.Label label1;
         private OdontogramEntryCanvas canvas;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn colObservations;
         private System.Windows.Forms.DataGridViewButtonColumn colExams;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDummy;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

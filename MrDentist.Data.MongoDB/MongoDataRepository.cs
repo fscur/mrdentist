@@ -1,6 +1,8 @@
 ﻿using MongoDB.Driver;
 using MrDentist.Data.MongoDB.DAOs;
 using System;
+using System.Collections.Generic;
+using System.Security.Authentication;
 
 namespace MrDentist.Data.MongoDB
 {
@@ -32,6 +34,18 @@ namespace MrDentist.Data.MongoDB
 
         public MongoDataRepository(string connectionString)
         {
+            MongoClientSettings settings = new MongoClientSettings();
+            settings.Server = new MongoServerAddress("mrdentist.documents.azure.com", 10255);
+            settings.UseSsl = true;
+            settings.SslSettings = new SslSettings();
+            settings.SslSettings.EnabledSslProtocols = SslProtocols.Tls12;
+
+            MongoIdentity identity = new MongoInternalIdentity("mrdentist", "mrdentist");
+            MongoIdentityEvidence evidence = new PasswordEvidence("R5oUrEPPRLrzt4kRk4hXwsdMEqpJsyXwsSFmkrq38zumTjd4I2SaeYktBC8J2chAOiVhiP9SbFEXKMNXXXn6jA==");
+
+            settings.Credential = new MongoCredential("SCRAM-SHA-1", identity, evidence);
+
+
             Client = new MongoClient(connectionString);
             this.patients = new MongoPatientsDataAccessObject(this);
             this.dentists = new MongoDentistsDataAccessObject(this);

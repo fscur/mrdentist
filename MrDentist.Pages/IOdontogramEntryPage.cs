@@ -5,6 +5,7 @@ namespace MrDentist.Pages
 {
     public interface IOdontogramEntryPage : IPage
     {
+        event EventHandler SaveRequested;
         event EventHandler AddCavityClicked;
         event EventHandler AddRestorationClicked;
         event EventHandler EraserClicked;
@@ -12,5 +13,6 @@ namespace MrDentist.Pages
         void SetEditMode(OdontogramEditMode mode);
         void SetCanvasImage(System.Drawing.Image image);
         void AddShapeToCanvas(IDentalIssueShape shape);
+        void ClearCanvas();
     }
 }

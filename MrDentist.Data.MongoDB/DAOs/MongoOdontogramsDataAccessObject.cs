@@ -127,5 +127,16 @@ namespace MrDentist.Data.MongoDB.DAOs
                 throw;
             }
         }
+
+        public void AddOdontogramEntryIssue(int entryId, IDentalIssue issue)
+        {
+            issuesCollection.InsertOne(issue.ToDto(entryId));
+        }
+
+        public int GetNextIssueId()
+        {
+            var id = issuesCollection.Find(FilterDefinition<MongoDentalIssueDTO>.Empty).SortByDescending(p => p.Id).FirstOrDefault()?.Id;
+            return id.HasValue ? id.Value + 1 : 0;
+        }
     }
 }

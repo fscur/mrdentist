@@ -17,6 +17,11 @@ namespace MrDentist.Data.Memory
             throw new System.NotImplementedException();
         }
 
+        public void AddOdontogramEntryIssue(int entryId, IDentalIssue issue)
+        {
+            throw new NotImplementedException();
+        }
+
         public Odontogram Get(int id)
         {
             throw new System.NotImplementedException();
@@ -25,6 +30,11 @@ namespace MrDentist.Data.Memory
         public Odontogram GetByPatientId(int id)
         {
             throw new System.NotImplementedException();
+        }
+
+        public int GetNextIssueId()
+        {
+            throw new NotImplementedException();
         }
 
         public OdontogramEntry GetOdontogramEntry(int odontogramId, DateTime date)

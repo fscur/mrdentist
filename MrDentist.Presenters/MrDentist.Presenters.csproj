@@ -46,8 +46,11 @@
     <Compile Include="IOdontogramEntryPresenter.cs" />
     <Compile Include="IPatientHistoryPresenter.cs" />
     <Compile Include="IPresenter.cs" />
+    <Compile Include="IPresenterParams.cs" />
     <Compile Include="OdontogramEntryPresenter.cs" />
+    <Compile Include="OdontogramEntryPresenterParams.cs" />
     <Compile Include="PatientHistoryPresenter.cs" />
+    <Compile Include="PatientHistoryPresenterParams.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -58,6 +61,10 @@
     <ProjectReference Include="..\MrDentist.Models\MrDentist.Models.csproj">
       <Project>{9a6ded69-3a82-4f33-9667-7e7412ef2c5c}</Project>
       <Name>MrDentist.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MrDentist.Net.Http\MrDentist.Net.Http.csproj">
+      <Project>{C103B3E2-B833-4F3A-91F3-C22A6BEDCD67}</Project>
+      <Name>MrDentist.Net.Http</Name>
     </ProjectReference>
     <ProjectReference Include="..\MrDentist.Pages\MrDentist.Pages.csproj">
       <Project>{816cdb0e-a7f2-41dc-96f3-1421a5b39bc1}</Project>

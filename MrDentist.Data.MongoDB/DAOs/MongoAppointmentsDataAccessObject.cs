@@ -1,4 +1,5 @@
 ﻿using MongoDB.Driver;
+using MrDentist.Data.MongoDB.DTOs;
 using MrDentist.Models;
 using System.Collections.Generic;
 

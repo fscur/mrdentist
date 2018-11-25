@@ -1,8 +1,12 @@
 ﻿using MrDentist.Data;
+using MrDentist.DesktopApp.Extensions;
 using MrDentist.Models;
+using MrDentist.Models.Extensions;
+using MrDentist.Net.Http;
 using MrDentist.Pages;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace MrDentist.DesktopApp
@@ -29,6 +33,7 @@ namespace MrDentist.DesktopApp
 
         public event EventHandler<Appointment> SelectedAppointmentChanged;
         public event EventHandler<Appointment> EditOdontogramEntryClicked;
+        public event EventHandler NeedsReloading;
 
         private void InitAppointmentsDataGridView()
         {
@@ -79,6 +84,8 @@ namespace MrDentist.DesktopApp
 
         public void SetPatientAppointments(List<Appointment> appointments)
         {
+            appointmentsDataGridView.Rows.Clear();
+
             foreach (var appointment in appointments)
             {
                 var rowId = appointmentsDataGridView.Rows.Add();
@@ -92,9 +99,19 @@ namespace MrDentist.DesktopApp
             }
         }
 
-        public void SetSelectedOdontogramEntry(OdontogramEntry entry)
+        public void SetOdontogramEntries(IEnumerable<OdontogramEntry> entries)
         {
-            entry.DentalIssues.ForEach(p => this.canvas.Shapes.Add(p.Shape));
+            this.canvas.Shapes.Clear();
+
+            foreach (var entry in entries)
+            {
+                entry.DentalIssues.ForEach(p => this.canvas.Shapes.Add(p.Shape));
+            }
+        }
+
+        public void SetCanvasImage(Image image)
+        {
+            this.canvas.Image = image;
         }
 
         public void SetPatient(Patient patient)
@@ -112,6 +129,17 @@ namespace MrDentist.DesktopApp
         public void ClearSelectedOdontogramEntry()
         {
             this.canvas.Shapes.Clear();
+        }
+
+        public override void Reload()
+        {
+            var selectedRow = appointmentsDataGridView.SelectedRows.Count > 0 ? appointmentsDataGridView.SelectedRows[0].Index : 0;
+
+            if (NeedsReloading != null)
+                NeedsReloading.Invoke(this, new EventArgs());
+
+            if (appointmentsDataGridView.Rows.Count > 0)
+                appointmentsDataGridView.Rows[selectedRow].Selected = true;
         }
     }
 }

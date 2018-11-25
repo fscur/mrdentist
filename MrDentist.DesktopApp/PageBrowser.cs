@@ -108,7 +108,6 @@ namespace MrDentist.DesktopApp
 
             Text = $"Mr. Dentist - {page.TitleText}";
             currentPage = page;
-
             UpdateUI();
         }
     }

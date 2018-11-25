@@ -102,8 +102,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -112,7 +110,7 @@
   <ItemGroup>
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\AppointmentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -120,15 +118,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\LocalIIS.pubxml" />
     <None Include="Properties\PublishProfiles\MrDentistRestAPI20181120091246 - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MrDentist.Data.MongoDB\MrDentist.Data.MongoDB.csproj">
+      <Project>{e08c22ad-c068-4beb-83d9-31ce548f77db}</Project>
+      <Name>MrDentist.Data.MongoDB</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MrDentist.Data\MrDentist.Data.csproj">
       <Project>{dc6302e4-4961-4179-a032-9ee75ec729f1}</Project>
       <Name>MrDentist.Data</Name>

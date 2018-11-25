@@ -13,11 +13,14 @@ namespace MrDentist.DesktopApp
         private ToolStripButton addCavityButton;
         private ToolStripButton addRestorationButton;
         private ToolStripButton eraserButton;
+        private ToolStripButton saveButton;
 
+        public event EventHandler SaveRequested;
         public event EventHandler AddCavityClicked;
         public event EventHandler AddRestorationClicked;
         public event EventHandler EraserClicked;
         public event EventHandler<IPointF> CanvasMouseUp;
+        public event EventHandler NeedsReloading;
 
         public OdontogramEntryPage()
         {
@@ -36,6 +39,28 @@ namespace MrDentist.DesktopApp
         }
 
         private void InitToolStrips()
+        {
+            //ToolStrip commonToolStrip = SaveToolStrip();
+            //ToolStrips.Add(commonToolStrip);
+
+            ToolStrip drawingToolStrip = DrawingToolStrip();
+            ToolStrips.Add(drawingToolStrip);
+        }
+
+        private ToolStrip SaveToolStrip()
+        {
+            var saveToolStrip = new ToolStrip();
+
+            saveButton = new ToolStripButton(Properties.Resources.floppy.ToBitmap());
+            saveButton.ToolTipText = "Salvar";
+            saveButton.Click += (s, e) => { RaiseSaveRequested(); };
+            saveButton.CheckOnClick = true;
+            saveToolStrip.Items.Add(saveButton);
+            
+            return saveToolStrip;
+        }
+
+        private ToolStrip DrawingToolStrip()
         {
             var drawingToolStrip = new ToolStrip();
 
@@ -56,8 +81,13 @@ namespace MrDentist.DesktopApp
             eraserButton.Click += (s, e) => { RaiseEraserClicked(); };
             eraserButton.CheckOnClick = true;
             drawingToolStrip.Items.Add(eraserButton);
+            return drawingToolStrip;
+        }
 
-            ToolStrips.Add(drawingToolStrip);
+        private void RaiseSaveRequested()
+        {
+            if (SaveRequested != null)
+                SaveRequested.Invoke(this, new EventArgs());
         }
 
         private void RaiseAddCavityClicked()
@@ -118,6 +148,16 @@ namespace MrDentist.DesktopApp
         public void AddShapeToCanvas(IDentalIssueShape shape)
         {
             this.canvas.Shapes.Add(shape);
+        }
+
+        public void ClearCanvas()
+        {
+            this.canvas.Shapes.Clear();
+        }
+
+        public void Reload()
+        {
+            throw new NotImplementedException();
         }
     }
 }

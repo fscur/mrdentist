@@ -1,9 +1,10 @@
-﻿using MrDentist.Models;
+﻿using MrDentist.Data.DTOs;
+using MrDentist.Models;
 using System;
 
-namespace MrDentist.Data.MongoDB
+namespace MrDentist.Data.MongoDB.DTOs
 {
-    internal class MongoAppointmentDTO
+    public class MongoAppointmentDTO : IAppointmentDTO
     {
         public int Id { get; set; }
         public DateTime Date { get; set; }
@@ -14,7 +15,7 @@ namespace MrDentist.Data.MongoDB
         public int? OdontogramEntryId { get; set; }
     }
 
-    internal static partial class AppointmentExtensions
+    public static partial class AppointmentExtensions
     {
         public static MongoAppointmentDTO ToDto(this Appointment obj)
         {

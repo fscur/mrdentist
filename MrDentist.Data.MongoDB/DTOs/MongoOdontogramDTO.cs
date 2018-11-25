@@ -37,8 +37,7 @@ namespace MrDentist.Data.MongoDB.DTOs
             }
 
             var odontogram = new Odontogram(dto.Id) {
-                BaseImageUrl = dto.BaseImageUrl,
-                BaseImage = System.Drawing.Image.FromFile(dto.BaseImageUrl),
+                BaseImageUrl = dto.BaseImageUrl
             };
 
             return odontogram;

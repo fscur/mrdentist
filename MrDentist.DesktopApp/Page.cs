@@ -38,6 +38,17 @@ namespace MrDentist.DesktopApp
             base.Dispose(disposing);
         }
 
+        protected override void OnLayout(LayoutEventArgs e)
+        {
+            base.OnLayout(e);
+            Reload();
+        }
+
+        public virtual void Reload()
+        {
+
+        }
+
         private void InitializeComponent()
         {
             this.SuspendLayout();

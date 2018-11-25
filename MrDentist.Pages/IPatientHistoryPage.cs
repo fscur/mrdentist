@@ -1,6 +1,7 @@
 ﻿using MrDentist.Models;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace MrDentist.Pages
 {
@@ -8,9 +9,10 @@ namespace MrDentist.Pages
     {
         event EventHandler<Appointment> SelectedAppointmentChanged;
         event EventHandler<Appointment> EditOdontogramEntryClicked;
-        void SetSelectedOdontogramEntry(OdontogramEntry entry);
+        void SetOdontogramEntries(IEnumerable<OdontogramEntry> entry);
         void SetPatient(Patient patient);
         void SetPatientAppointments(List<Appointment> appointments);
         void ClearSelectedOdontogramEntry();
+        void SetCanvasImage(Image image);
     }
 }

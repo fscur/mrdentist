@@ -20,7 +20,9 @@ namespace MrDentist.ConsoleTest
 
         static void Main(string[] args)
         {
-            var repository = new MrDentist.Data.MongoDB.MongoDataRepository("mongodb://localhost:27017");
+            //var repository = new MrDentist.Data.MongoDB.MongoDataRepository("mongodb://localhost:27017");
+            var repository = new MrDentist.Data.MongoDB.MongoDataRepository(
+                "mongodb://mrdentist:R5oUrEPPRLrzt4kRk4hXwsdMEqpJsyXwsSFmkrq38zumTjd4I2SaeYktBC8J2chAOiVhiP9SbFEXKMNXXXn6jA==@mrdentist.documents.azure.com:10255/?ssl=true&replicaSet=globaldb");
 
             var users = CreateFakeUsers(repository);
             var addresses = CreateFakeAddresses(repository);
@@ -118,17 +120,15 @@ namespace MrDentist.ConsoleTest
             if (repository.Odontograms.Get(0) != null)
                 return repository.Odontograms.All;
 
-            var odontogramimageurl = @"D:\Drive\study\UCS\CS\2018-4\Projeto e Arquitetura\Trabalho Dentistas\mrdentist\images\odontogram.jpg";
+            var odontogramimageurl = @"https://mrdentist.file.core.windows.net/mrdentisttest0/odontogram.jpg";
 
             var odontogram0 = new Odontogram(0)
             {
-                BaseImage = System.Drawing.Image.FromFile(odontogramimageurl),
                 BaseImageUrl = odontogramimageurl
             };
 
             var odontogram1 = new Odontogram(1)
             {
-                BaseImage = System.Drawing.Image.FromFile(odontogramimageurl),
                 BaseImageUrl = odontogramimageurl
             };
 
@@ -137,28 +137,28 @@ namespace MrDentist.ConsoleTest
                 Date = date0,
             };
 
-            odontogramEntry0.DentalIssues.Add(new Cavity(0, new Models.PointF(50, 70)));
+            //odontogramEntry0.DentalIssues.Add(new Cavity(0, new Models.PointF(50, 70)));
 
             var odontogramEntry1 = new OdontogramEntry(1)
             {
                 Date = date1,
             };
 
-            odontogramEntry1.DentalIssues.Add(new Cavity(1, new Models.PointF(100, 50)));
+            //odontogramEntry1.DentalIssues.Add(new Cavity(1, new Models.PointF(100, 50)));
 
             var odontogramEntry2 = new OdontogramEntry(2)
             {
                 Date = date2,
             };
 
-            odontogramEntry2.DentalIssues.Add(new Cavity(2, new Models.PointF(140, 190)));
+            //odontogramEntry2.DentalIssues.Add(new Cavity(2, new Models.PointF(140, 190)));
 
             var odontogramEntry3 = new OdontogramEntry(3)
             {
                 Date = date3,
             };
 
-            odontogramEntry3.DentalIssues.Add(new Cavity(3, new Models.PointF(20, 30)));
+            //odontogramEntry3.DentalIssues.Add(new Cavity(3, new Models.PointF(20, 30)));
 
             odontogram0.Entries.Add(odontogramEntry0);
             odontogram1.Entries.Add(odontogramEntry1);
