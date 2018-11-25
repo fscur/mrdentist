@@ -16,7 +16,6 @@ namespace MrDentist.Data.MongoDB
         private readonly MongoExamsDataAccessObject exams;
         private readonly MongoPicturesDataAccessObject pictures;
         private readonly MongoOdontogramsDataAccessObject odontograms;
-        //private readonly MongoOdontogramEntriesDataAccessObject odontogramEntries;
         private readonly MongoAddressesDataAccessObject addresses;
         private readonly MongoUsersDataAccessObject users;
 
@@ -26,7 +25,6 @@ namespace MrDentist.Data.MongoDB
         public IExamsDataAccessObject Exams => exams;
         public IPicturesDataAccessObject Pictures => pictures;
         public IOdontogramsDataAccessObject Odontograms => odontograms;
-        //public IOdontogramEntriesDataAccessObject OdontogramEntries => odontogramEntries;
         public IAddressesDataAccessObject Addresses => addresses;
         public IUsersDataAccessObject Users => users;
 
@@ -34,18 +32,6 @@ namespace MrDentist.Data.MongoDB
 
         public MongoDataRepository(string connectionString)
         {
-            MongoClientSettings settings = new MongoClientSettings();
-            settings.Server = new MongoServerAddress("mrdentist.documents.azure.com", 10255);
-            settings.UseSsl = true;
-            settings.SslSettings = new SslSettings();
-            settings.SslSettings.EnabledSslProtocols = SslProtocols.Tls12;
-
-            MongoIdentity identity = new MongoInternalIdentity("mrdentist", "mrdentist");
-            MongoIdentityEvidence evidence = new PasswordEvidence("R5oUrEPPRLrzt4kRk4hXwsdMEqpJsyXwsSFmkrq38zumTjd4I2SaeYktBC8J2chAOiVhiP9SbFEXKMNXXXn6jA==");
-
-            settings.Credential = new MongoCredential("SCRAM-SHA-1", identity, evidence);
-
-
             Client = new MongoClient(connectionString);
             this.patients = new MongoPatientsDataAccessObject(this);
             this.dentists = new MongoDentistsDataAccessObject(this);
@@ -53,7 +39,6 @@ namespace MrDentist.Data.MongoDB
             this.exams = new MongoExamsDataAccessObject(this);
             this.pictures = new MongoPicturesDataAccessObject(this);
             this.odontograms = new MongoOdontogramsDataAccessObject(this);
-            //this.odontogramEntries = new MongoOdontogramEntriesDataAccessObject(this);
             this.addresses = new MongoAddressesDataAccessObject(this);
             this.users = new MongoUsersDataAccessObject(this);
         }
